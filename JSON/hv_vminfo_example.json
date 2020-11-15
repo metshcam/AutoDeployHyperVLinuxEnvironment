@@ -2,7 +2,7 @@
   "hv_hostinfo": {
     "Name":"hv_srv01",
     "OS":"Windows 10",
-    "NetInt":"$hv_vmsw_intname"
+    "NetIf":"$hv_vmswitch_ifname"
   }
   
   "vm_info": {
