@@ -1,6 +1,7 @@
 ####
 ## Step by step instructions on manually building and configuring 
 ## a basic CentOS 8 virtual machine, based on HyperV Gen2, using EFI
+####
 
 ####
 ## Prepare HyperV environment
@@ -20,7 +21,7 @@
   
 ####
 ## Prepare parent virtual drive
-##
+####
 
 1) Download the most recent version of CentOS 8, minimal installation ISO file
   - CentOS-8.2.2004-x86_64-minimal.iso
