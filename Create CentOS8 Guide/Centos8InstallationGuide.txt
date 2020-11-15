@@ -25,6 +25,7 @@
 1) Download the most recent version of CentOS 8, minimal installation ISO file
   - CentOS-8.2.2004-x86_64-minimal.iso
   - http://mirror.csclub.uwaterloo.ca/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-minimal.iso
+  - Copy CentOS-8.2.2004-x86_64-minimal.iso file to e:\hyperv\iso
   
 2) To create a new virtual disk, launch your Hyper-V Manager GUI/interface:
   - From Hyper-V Manager, right-click your server/host and select; New --> Hard Disk
