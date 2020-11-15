@@ -17,7 +17,7 @@ if ($hv_switchlist.Count -eq 0) {
   "
 }
 
-## If there are about none, display and move on.
+## If there are above none, display and move on.
 ##
 if ($hv_switchlist.Count -gt 0) {
   Write-Host "
