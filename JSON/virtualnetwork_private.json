@@ -1,7 +1,3 @@
-## Get NetAdapterInterface through function listing all the 
-## HyperV network interfaces and choosing best
-##
-
 {
     "HyperVVMSwitchParms": {
         "Name" = "vBridge"
