@@ -1,0 +1,9 @@
+{
+  "hv_hostinfo": {
+    "Name":"hv_srv01",
+    "OS":"Windows 10"
+  }
+  "hv_vmrole":"Role01",
+  "hv_vm
+
+}
