@@ -2,12 +2,12 @@
   "hv_hostinfo": {
     "Name":"hv_srv01",
     "OS":"Windows 10",
-    "NetInt":"$hv_vmsw_intname:"
+    "NetInt":"$hv_vmsw_intname"
   }
   
   "vm_info": {
     "hv_vmrole":"Role01",
-    "hv_vmswitch_name":"
+    "hv_vmswitch_name":"vBridge0"
   }
 
 }
