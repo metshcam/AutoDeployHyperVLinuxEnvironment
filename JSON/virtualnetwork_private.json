@@ -1,9 +1,7 @@
 {
-    "HyperVVMSwitchParms": [
-        {
-            "Name" = "vBridge"
-            "SwitchType" = "Private"
-            "NetAdapterInterface" = "$vmswitch_interfacename"
-        }
-    ]
+    "HyperVVMSwitchParms": {
+        "Name":"vBridge",
+        "SwitchType":"Private",
+        "NetAdapterInterface":"$vmswitch_interfacename"
+    }
 }
