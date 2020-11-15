@@ -22,6 +22,10 @@ if ($hv_switchlist.Count -eq 0) {
 if ($hv_switchlist.Count -gt 0) {
   Write-Host "
   Your environment currently has $hv_switchlist.Count networks.
-  We will check and see if there will be a conflict using $hv_switchinfo.
   "
 }
+
+foreach ($vswitch in $hv_switchlist) {
+  ## check and validate against imported "Name" value from
+  ## https://github.com/metshcam/AutoDeployHyperVLinuxEnvironment/blob/main/JSON/hv_ps_switchparameters.json
+  }
