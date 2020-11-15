@@ -7,6 +7,5 @@
         "Name" = "vBridge"
         "SwitchType" = "Private"
         "NetAdapterInterface" = "$vmswitch_interfacename"
-        "
     }
 }
