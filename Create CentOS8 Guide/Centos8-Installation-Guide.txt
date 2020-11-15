@@ -1,0 +1,94 @@
+####
+## Step by step instructions on manually building and configuring 
+## a basic CentOS 8 virtual machine, based on HyperV Gen2, using EFI
+
+####
+## Prepare HyperV environment
+####
+
+1) Enable all virtual technology on your system, as Gen2 virtual machines will require some updated hardware for some more recent functionality
+
+2) It is strongly recommended that you not use a WiFi adapter as your network card, when using a Bridged/External network environment type 
+
+3) Although the initial script will verify and install it, you should install the 'OpenSSH Client' feature offered for free under your Windows settings
+
+4) Logically create your virtual disk and machine locations, and a location to store your .iso files
+  - e.g. 
+    e:\hyperv\machines
+    e:\hyperv\disks
+    e:\hyperv\iso
+  
+####
+## Prepare parent virtual drive
+##
+
+1) Download the most recent version of CentOS 8, minimal installation ISO file
+  - CentOS-8.2.2004-x86_64-minimal.iso
+  - http://mirror.csclub.uwaterloo.ca/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-minimal.iso
+  
+2) To create a new virtual disk, launch your Hyper-V Manager GUI/interface:
+  - From Hyper-V Manager, right-click your server/host and select; New --> Hard Disk
+  - Select the following options for your (Gen2/EFI) virtual drive:
+    - VHDX
+    - Dynamically expanding
+    - Name: CentOS8_parentdisk.vhdx
+    - Location: e:\hyperv\disks
+    - Size: 40gb (we can always expand on the drive later with the proper configuration)
+
+5) Once the disk is created, we need to create a new virtual machine:
+  - From Hyper-V Manager, right-click your server/host and select; New --> Virtual machine
+  - Select the following options for your (Gen2) virtual machine:
+    - Name: CentOS8_base
+    - Generation: 2
+    - Memory: 2048
+    - Use dynamic memory
+    - Connection: Default Switch
+    - Attach a virtual disk later
+    - Create the disk
+    - Open File Explorer, and browse to your hard drive location (e.g. e:\hyperv\disks\)
+  - Validate that CenOS8_base.vhdx exists. (e.g. it will start at 4MB in size)
+
+6) Now we need to make changes to the virtual machine, to support our operating system installation:
+  - From Hyper-V Manager, select your server/host, and you should see your newly built virtual machine listed
+  - Right-click the virtual machine, and select, "Settings..."
+    - Security tab (note: there are limitations to using these features, these are not production ready builds):
+      -Secure boot: Disabled
+      - TPM: Disabled
+      - Shielding: Disabled
+    - Memory tab:
+      - RAM: 2048MB
+      - Dynamic memory: Enabled
+        - Min RAM: 512MB
+        - Max RAM: 2048MB
+        - Memory buffer: 20%
+        - Memory weight: 0/50%
+    - Processor tab:
+      - 4 virtual (i.e. depends on system, requirements)
+      - Default settings (i.e. some advantages can be had with newer hardware)
+    - Network tab:
+      - Virtual switch: Default Switch
+    - Integration services: All offered
+    - Checkpoints: All disabled
+    - Automatic start/stop: N/A
+
+7) Now that we've applied the new settings to this virtual machine, we need to attach our drive
+  - Right-click the virtual machine, and select, "Settings..."
+    - SCSI Controller tab:
+      - Select "Hard drive"
+      - Click, "Add"
+      - SCSI default controller/location
+      - Media:
+        - Virtual hard disk:
+          - Click, "Browse..."
+          - Select e:\hyperv\disks\CentOS8_base.vhdx
+      - **If DVD drive does not exist in virtual machine, create new DVD drive through SCSI controller
+
+8) Mount the CentOS8 Minimal .iso file to the virtual machine
+  - Right-click the virtual machine, and select, "Settings..."
+    - Select SCSI Controller tab
+    - Select DVD drive and under the Media options, choose "Image File" and mount your .iso from e:\hyperv\iso\
+
+9) Assign boot order under your virtual machine Settings --> Firmware and use the "Move Up/Down" buttons to adjust your DVD drive as your first in the boot order
+
+10) Launch virtual machine from Hyper-V Manager, and right-click the virtual machine, and select "Connect" to launch the console GUI interface
+          
